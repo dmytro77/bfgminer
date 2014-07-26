@@ -1080,6 +1080,7 @@ int serial_open(const char *devpath, unsigned long baud, uint8_t timeout, bool p
 {
 #ifdef WIN32
 	HANDLE hSerial = CreateFile(devpath, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
+	applog(LOG_DEBUG, "CreateFile returned %p", hSerial);
 	if (unlikely(hSerial == INVALID_HANDLE_VALUE))
 	{
 		DWORD e = GetLastError();
